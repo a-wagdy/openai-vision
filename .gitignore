@@ -22,3 +22,4 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 /docker-volumes/mysql
+/docker-volumes/redis

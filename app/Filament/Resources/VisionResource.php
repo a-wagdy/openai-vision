@@ -22,7 +22,7 @@ class VisionResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')->required()->maxLength(255)->columnSpan('full'),
                 Forms\Components\FileUpload::make('image')->required(),
-                Forms\Components\MarkdownEditor::make('response')->nullable()->columnSpan('full'),
+                Forms\Components\KeyValue::make('response.choices.0.message')->nullable()->columnSpan('full'),
             ]);
     }
 
@@ -32,9 +32,7 @@ class VisionResource extends Resource
             ->columns([
                 Tables\Columns\TextInputColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextInputColumn::make('response')->state(function (Vision $record): string {
-                    return $record->response ? json_encode($record->response, JSON_PRETTY_PRINT) : '';
-                }),
+                Tables\Columns\TextInputColumn::make('response.choices.0.message.content'),
             ])
             ->filters([
                 //
