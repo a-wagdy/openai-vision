@@ -7,6 +7,7 @@ namespace App\Integrations\OpenAI;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Facades\Log;
 use Psr\Http\Message\ResponseInterface;
 
 class OpenAIClient
@@ -57,8 +58,7 @@ class OpenAIClient
         try {
             return \call_user_func_array([$this->client, $method], $parameters);
         } catch (Exception $exception) {
-            dd($exception->getMessage());
-            //Log::error('Error: ' . $exception->getMessage());
+            Log::error('Error: ' . $exception->getMessage());
         }
     }
 
