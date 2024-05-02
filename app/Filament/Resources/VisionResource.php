@@ -30,7 +30,7 @@ class VisionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                Tables\Columns\TextInputColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextInputColumn::make('response')->state(function (Vision $record): string {
                     return $record->response ? json_encode($record->response, JSON_PRETTY_PRINT) : '';
