@@ -32,7 +32,9 @@ class VisionResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextInputColumn::make('response'),
+                Tables\Columns\TextInputColumn::make('response')->state(function (Vision $record): ?string {
+                    return json_encode($record->response, JSON_PRETTY_PRINT);
+                }),
             ])
             ->filters([
                 //

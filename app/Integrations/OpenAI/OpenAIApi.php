@@ -10,23 +10,34 @@ readonly class OpenAIApi
     {
     }
 
-    public function test()
+    public function identifyImage(string $base64_image)
     {
-        $payload = [
-            'model' => 'gpt-3.5-turbo',
-            'temperature' => 0.7,
+        $requestPayload = [
+            'model' => 'gpt-4-turbo',
             'messages' => [
                 [
                     'role' => 'user',
-                    'content' => 'Say this is a test!'
-               ]
-            ]
+                    'content' => [
+                        [
+                            'type' => 'text',
+                            'text' => 'What’s in this image?',
+                        ],
+                        [
+                            'type' => 'image_url',
+                            'image_url' => [
+                                'url' => 'data:image/jpeg;base64,' . $base64_image
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'max_tokens' => 300,
         ];
 
         return $this->client->post(
-            'completions',
+            'chat/completions',
             [
-                'json' => $payload,
+                'json' => $requestPayload,
             ]
         );
     }

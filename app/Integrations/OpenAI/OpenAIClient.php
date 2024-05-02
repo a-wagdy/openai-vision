@@ -32,11 +32,11 @@ class OpenAIClient
         }
 
         $config = [
-            'timeout' => 5,
+            'timeout' => 30,
             'verify' => false,
             'base_uri' => 'https://' . self::API_ENDPOINT,
             'headers' => [
-                'Authorization' => 'Bearer ' . 'sk-proj-TEgv3azVokSbDeH3Ar6FT3BlbkFJPim4LSrGmUdIC3iRn2Kp',
+                'Authorization' => 'Bearer ' . 'sk-proj-Fqm6HMp3ltXczVaczwXRT3BlbkFJ3HA3MDmoBR7y4H6goq2A',
                 'Content-Type' => 'application/json',
             ],
         ];

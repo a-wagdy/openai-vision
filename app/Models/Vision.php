@@ -14,4 +14,11 @@ class Vision extends Model
         'image' => 'string',
         'response' => 'array',
     ];
+
+    public function getImageBase64(): string
+    {
+        $imagePath = storage_path('app/public/' . $this->image);
+
+        return base64_encode(file_get_contents($imagePath));
+    }
 }
