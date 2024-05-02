@@ -9,6 +9,12 @@ class Vision extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'image',
+        'response',
+    ];
+
     protected $casts = [
         'name' => 'string',
         'image' => 'string',
