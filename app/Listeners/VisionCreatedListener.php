@@ -28,15 +28,13 @@ class VisionCreatedListener implements ShouldQueue
 
         $vision = $event->vision;
 
-        $api = new OpenAIApi(new OpenAIClient());
+        $openAIApi = new OpenAIApi(new OpenAIClient());
 
-        $response = $api->identifyImage($vision->getImageBase64());
+        $response = $openAIApi->identifyImage($vision->getImageBase64());
 
         $responseBody = $response->getBody()->getContents();
 
-        $response = json_decode($responseBody, true);
-
-        $vision->update(['response' => $response]);
+        $vision->update(['response' => json_decode($responseBody, true)]);
     }
 
 
