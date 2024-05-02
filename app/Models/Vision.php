@@ -9,9 +9,22 @@ class Vision extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'image',
+        'response',
+    ];
+
     protected $casts = [
         'name' => 'string',
         'image' => 'string',
         'response' => 'array',
     ];
+
+    public function getImageBase64(): string
+    {
+        $imagePath = storage_path('app/public/' . $this->image);
+
+        return base64_encode(file_get_contents($imagePath));
+    }
 }
