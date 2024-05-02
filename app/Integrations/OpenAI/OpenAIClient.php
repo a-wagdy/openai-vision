@@ -36,7 +36,7 @@ class OpenAIClient
             'verify' => false,
             'base_uri' => 'https://' . self::API_ENDPOINT,
             'headers' => [
-                'Authorization' => 'Bearer ' . 'sk-proj-Fqm6HMp3ltXczVaczwXRT3BlbkFJ3HA3MDmoBR7y4H6goq2A',
+                'Authorization' => 'Bearer ' . $apiKey,
                 'Content-Type' => 'application/json',
             ],
         ];
