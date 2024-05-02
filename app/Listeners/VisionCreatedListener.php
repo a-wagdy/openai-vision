@@ -36,7 +36,7 @@ class VisionCreatedListener implements ShouldQueue
 
         $response = json_decode($responseBody, true);
 
-        $vision->update(['response' => json_encode($response)]);
+        $vision->update(['response' => $response]);
     }
 
 
