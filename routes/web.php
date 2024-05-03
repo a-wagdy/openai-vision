@@ -5,5 +5,5 @@ use App\Integrations\OpenAI\OpenAIClient;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-   dd('111');
+   dd('Tadaaa! the image is working!');
 });
